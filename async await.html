@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <dl class="container"></dl>
+    
+</body>
+
+<script>
+    var $dl = document.querySelector('.container');
+    var users = null;
+    
+
+
+    
+async function getUser(_id){
+    
+  
+    let promise= await fetch(`https://jsonplaceholder.typicode.com/users/${_id}`);
+            
+    let usuario = await promise.json();
+    console.log(usuario)
+    return usuario
+   
+        
+        
+   
+}
+
+    function addUsers(usuario){
+        console.time('DOM')
+       
+        adicionarElemento($dl,'dt',usuario.name);
+        adicionarElemento($dl,'dd',usuario.id,usuario.email,
+        usuario.phone, usuario.website);
+    
+      
+       console.timeEnd('DOM')
+      
+
+       
+
+             
+}
+
+function adicionarElemento(coitainer , tag , ...text){
+        [...text].forEach(function(str){
+            let _tag= document.createElement(tag);
+            let _txtNode = document.createTextNode(str);
+            _tag.appendChild(_txtNode);
+            coitainer.appendChild(_tag)
+
+        });
+
+       }
+       
+    getUser('1').then((fs)=>{
+     addUsers(fs)   
+        return getUser(2)
+
+    }).then((fs)=>{
+        addUsers(fs)   
+     console.log(fs)
+        return getUser(3)
+
+    }).then((fs)=>{
+        addUsers(fs)   
+        return getUser(4)
+
+    }).then((fs)=>{
+        addUsers(fs)   
+        
+    }).catch((fdd)=>{
+        fdd.err
+           console.log('deu ruim')
+
+    })
+
+
+
+</script>
+</html>

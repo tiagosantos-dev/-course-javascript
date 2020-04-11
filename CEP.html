@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saiba seu CEP</title>
+
+    <style>
+       
+         #msg{
+            float: left;
+           
+            margin-left: 30px;
+            background-color: tomato;
+            width: 20%;
+            height: 30px;
+            border-radius: 18px;
+            display: none;
+            text-align: center;
+            color: #fff;
+            transform: translateY(-30px);
+            transition: .5s ease-in-out;
+            
+            
+
+        }
+        #cep{
+            float: left;
+            width: 90%;
+            height: 30px;
+            margin-top: 10px;
+            border-radius:2px;
+            margin-left: 30px;
+            
+
+
+        }
+        #logradouro{
+            float: left;
+            width: 93%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+            
+
+        }
+
+        #bairro{
+            float: left;
+            width: 40%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+
+
+        }
+        
+        #localidade{
+            float: left;
+            width: 40%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+
+
+        }
+        
+        #complemento{
+            float: left;
+            width: 60%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+
+
+        }
+        #unidade{
+            float: left;
+            width: 8%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+
+
+        }
+        #uf{
+            float: left;
+            width: 31%;
+            height: 30px;
+            margin-top: 20px;
+            border-radius: 2px;
+            margin-left: 30px;
+
+
+        }
+        h1{
+            float: left;
+            width: 100%;
+            height: 40px;
+            background-image: url( "./comite-de-etica-em-pesquisa-comite-de-etica-em-pesquisa.jpg");
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+            
+            
+        }
+       
+        #label{
+            float: left;
+           
+            width: 10%;
+            height: 20%;
+            color:#fff;
+            transition: 1s;
+
+        }
+
+
+    </style>
+</head>
+<body>  
+    <h1>Saiba seu CEP </h1> 
+  
+    <div>
+        <form action="#">
+            <div id="msg">
+                <!-- <label  id="lbl"></label> -->
+            </div>
+           
+            <input type="text" name="" id="cep"  placeholder="CEP" maxlength="9">
+            <input type="text" name="" id="logradouro"  placeholder="logradouro">
+         
+            <input type="text" name="" id="bairro" placeholder="bairro">
+            <input type="text" name="" id="localidade" placeholder="localidade">
+            <input type="text" name="" id="unidade" placeholder="unidade">
+            <input type="text" name="" id="complemento" placeholder="complemento">
+            <input type="text" name="" id="uf" placeholder="uf">
+
+            
+        </form>
+
+    </div>
+    
+</body>
+
+<script>
+    var $form = document.querySelector('form')
+    var $btnCep = document.querySelector('#cep')
+    var $inputLogradouro = document.getElementById('logradouro')
+    let $bairro = document.getElementById('bairro')
+    let $localidade = document.getElementById('localidade')
+    let $uf = document.getElementById('uf')
+    let $msg = document.getElementById('msg')
+    let $lbl = document.getElementById('lbl')
+
+    $btnCep.addEventListener('input',function(res){
+        let cepDigitado= this.value;
+        cepDigitado = cepDigitado.replace('-', '');
+        console.log(cepDigitado)
+        if(cepDigitado.length === 8){
+            getCep(cepDigitado)
+
+        }
+       
+        
+    })
+
+
+
+function getCep(cep){
+    let apiCep =fetch(`https://viacep.com.br/ws/${cep}/json/`).then((resposta)=>{
+       
+        ( resposta.json().then((res)=>{
+            if(res.erro){
+                $msg.textContent ='CEP INVALIDO'
+                    $msg.style.display = 'inline'
+                
+                setInterval(() => {
+                    $msg.style.display = 'none'
+                }, 3000);
+                throw new Error('fudeu tudo')
+
+            } 
+            console.log(res)
+            setEnderenco(res);
+          
+               
+     })).catch(function(err){
+    console.log(err.message)
+
+
+});
+
+}).catch(function(err){
+    console.log(err.mesenger('deu merda'))
+
+
+})
+
+
+
+
+}
+
+function setEnderenco(respostaa){
+    console.log(respostaa.logradouro)
+    $inputLogradouro.value = respostaa.logradouro;
+    $bairro.value = respostaa.bairro
+    $localidade.value = respostaa.localidade
+    $uf.value = respostaa.uf
+  
+
+
+
+
+}
+
+
+</script>
+</html>

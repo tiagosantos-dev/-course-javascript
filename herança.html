@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    
+
+
+
+
+</body>
+
+<script>
+    function contaBancaria(nome, numero,valor){
+        this.nome= nome;
+        this.numero = numero;
+        this.valor =0
+
+        
+        
+    }
+ 
+    
+
+//es5
+    function contaCorrente(nome, numero){
+        if(this instanceof contaCorrente){
+          contaBancaria.call(this,nome,numero);
+          this.constructor=contaCorrente;
+            
+        }else{
+
+            throw new Error('não é possivel criar objeto sem usar (new)');
+        }
+    }
+    contaCorrente.prototype = new contaBancaria();
+    var cc = new contaCorrente('ss',11)
+
+
+
+//es6
+    class contaPoupanca extends contaBancaria{
+        constructor(nome, numero){
+            super();
+            this.nome = nome;
+            this.numero = numero;
+
+        }
+        static get aniversario(){return new Date().getTime(); }
+       
+    }
+ 
+
+cp = new contaPoupanca('titi', 223);
+console.log(contaPoupanca.aniversario);
+
+
+</script>
+</html>

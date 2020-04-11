@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<form action="#" method="post" id="form1">
+		<h1>Curso JavasScript Udemy</h1>
+		<h2>Validar Forumlario</h2>
+		<label for="txtUser"> Login</label>
+		<input type="text" name="txtUser" id="txtUser">
+		<label for="txtPass">Senha</label>
+		<input type="password" name="txtPass" id="txtPass">
+		<button type="submit" id="btnEnviar">Enviar</button>
+	</form>	
+
+	<script>
+
+		(function(){
+
+
+		var $form1 = document.getElementById('form1');
+		var $txtUser = document.getElementById('txtUser');
+		var $txtPass = document.getElementById('txtPass');
+		var $btnEnviar = document.getElementById('btnEnviar');
+
+		$form1.addEventListener('submit', function(e){
+			if(!$txtUser.value || !$txtPass.value){
+				alert('Preencha todos os campos');
+				e.preventDefault();
+
+
+			}
+			
+
+
+		});
+
+		})()
+
+	</script>
+</body>
+</html>

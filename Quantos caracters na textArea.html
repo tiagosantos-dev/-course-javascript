@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Curso JavaScript</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<center>
+		<h1>Curso JavaScript Udemy</h1>
+		<h2>Quantos Caracteres?</h2>
+		<textarea cols="70" rows="25" maxlength="200" id="msg"></textarea>
+	<div id="restaContainer" style="display: none;">
+		<h3>Restam <span id="resta"></span> caracteres</h3>
+	</div>
+	</center>
+
+
+	<script>
+		(function(){
+			'use strict'
+
+
+		var $restaContainer = document.getElementById('restaContainer');
+		var $resta = document.getElementById('resta');
+		var $textarea = document.getElementById('msg');
+		var maxima = $textarea.maxLength;
+		
+		function mostrarContainerResta(){
+		$restaContainer.style.display ='block';
+		}
+
+		mostrarContainerResta();
+		mostrarCaracteresRestantes(maxima);
+		$textarea.addEventListener('input', function(e){
+			var numeroLetraDigitado = this.value.length;
+			var caracteresResatentes  =parseInt(maxima) - parseInt(numeroLetraDigitado); 
+			mostrarCaracteresRestantes(caracteresResatentes);
+
+
+		});
+
+
+		function mostrarCaracteresRestantes(n){
+			$resta.textContent= n;
+
+
+
+		}
+
+	})()
+	</script>
+</body>
+</html>

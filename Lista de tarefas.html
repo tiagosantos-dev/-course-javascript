@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		
+		.done{
+			text-decoration: line-through;
+
+
+		}
+
+	</style>
+
+
+</head>
+<body>
+<h1> Lista de tarefas</h1>
+<div class="container">
+	<input type="text" id="txtTask" name="">
+	<button id="btn">Cadastrar</button>
+
+
+	<ul>
+		<li> Assistir Netflix</li>
+		<li>jogar Video-game</li>
+		<li>Beber Cachaça</li>
+	</ul>
+
+</div>
+
+<script>
+	var $ul = document.querySelector('ul');
+	var $lis = $ul.querySelectorAll('li');
+	var $txtTask = document.getElementById('txtTask');
+	var $btn = document.getElementById('btn');
+
+
+	$ul.addEventListener('click', function(e){
+		if(e.target.nodeName === 'LI'){
+			toggleDone(e.target);
+			removeTask(e.target);
+
+
+		}
+	})
+
+	function removeTask(li){
+		confirm('Deseja Realmente Excluir a Tarefa '+
+			 li.textContent+'?');
+		li.parentNode.removeChild(li);
+
+
+	}
+
+	function toggleDone(li){
+		li.classList.toggle('done');
+	}
+
+	$btn.addEventListener('click',addTask);
+
+
+	$txtTask.addEventListener('keyup', addTeclar);
+
+
+	function addTeclar(e){
+		if(e.keyCode === 13){
+			addTask();
+
+
+		}
+
+	}
+
+
+	function addTask(){
+
+		var li = document.createElement('li'); // Criar a Li  no html
+		var text = document.createTextNode($txtTask.value); // criar o que há dentro da li
+		li.appendChild(text); // setando o texto na li
+		$ul.appendChild(li);
+
+		$txtTask.value='';
+		$txtTask.focus();
+	}
+
+
+</script>
+
+
+</body>
+</html>

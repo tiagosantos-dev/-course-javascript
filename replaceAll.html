@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript Completo</title>
+    <meta charset="utf-8">
+    <script src="document.js"></script>
+
+</head>
+<body>
+<h1>Prototípos</h1>
+<ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+</ul>
+
+
+</body>
+<script>
+
+        String.prototype.replaceAll = function (busca, troca) {
+            var str = this.valueOf();
+            return str.split(busca).join(troca);
+        };
+
+</script>
+</html>

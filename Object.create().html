@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript Completo</title>
+    <meta charset="utf-8">
+    <script src="document.js"></script>
+
+</head>
+<body>
+<h1>Objetos</h1>
+</body>
+
+<script>
+    // var obj1 ={
+    //     name : 'tiago',
+    //     falar: function(msg){
+    //         console.log(`${name} esta falando: ${msg}`);
+    //
+    //     }
+    //
+    // };
+    //
+    // var obj2 =new Object();
+    // obj2.name = 'tiago 2';
+    //
+    // function Pessoa(nome) {
+    //    this.nomee = nome;
+    //     this.falar= function(msg){
+    //         console.log(`${this.nome} esta falando : ${msg}`);
+    //
+    //     }
+    //     this.endereco = "rua Qualquer"
+    //
+    // }
+    //
+    // var tiago = new Pessoa('Tiago');
+    //
+    // var luana = Object.create(tiago);
+
+
+
+
+
+
+
+
+
+
+    var obj1 = {
+        nome: 'tiago',
+        falar: function (msg) {
+            console.log(`${nome} esta falando ${msg}`);
+        }
+    }
+
+
+    var obj2 = new Object();
+    obj2.gritar = 'hasuahasu';
+    obj2.endereco = 'rua dos peixes';
+
+
+    function Carro(modelo, marca, ano){
+        this.modelo = modelo;
+        this.marca = marca;
+        this.ano = ano;
+
+    }
+
+    var uno = new Carro('Uno', 'Fiat','2008');
+
+    var peugout = Object.create(uno);
+    peugout.modelo='208';
+    peugout.marca = 'peugout';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</html>

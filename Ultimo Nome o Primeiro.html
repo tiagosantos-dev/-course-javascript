@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title></title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<h1>Curso Javascript</h1>
+	<script>
+		var nome='daniel tapias morales';
+
+		var NomeFormatadoo= NomeFormatado(nome);
+
+
+		function NomeFormatado(nome){
+			var primeiroNome = nome.lastIndexOf(' ');
+			console.log(primeiroNome);
+			if(primeiroNome < 0){
+				return nome;
+
+
+			}
+			var primeirooNome = nome.slice(primeiroNome +1);
+			console.log(primeirooNome);
+			var ultimoNome = nome.indexOf(' ');
+			var ultimooNome = nome.slice(0,primeiroNome);
+			console.log(ultimooNome);
+
+			console.log(primeirooNome+', '+ultimooNome);
+
+
+
+
+
+
+		}
+
+
+	</script>
+
+</body>
+</html>

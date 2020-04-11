@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript Completo</title>
+    <meta charset="utf-8">
+    <script src="document.js"></script>
+
+</head>
+<body>
+<h1>Objetos - Interações</h1>
+</body>
+
+
+<script>
+    var obj1 = new Object();
+    obj1.nome = "Tiago";
+    obj1.sobrenome="Santos";
+    obj1.andar= function(){
+        console.log('andando');
+
+    }
+
+    var keys = Object.keys(obj1);
+
+    keys.forEach(function (prop) {
+        console.log('a propriedade é '+prop);
+
+    })
+
+
+    var vaalues = Object.values(obj1);
+        console.log('o valor é ',vaalues);
+
+
+
+    var entris = Object.entries(obj1);
+    console.log(entris);
+
+
+
+
+
+</script>
+</html>

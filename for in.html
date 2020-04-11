@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+    <title>Javascript Completo</title>
+    <meta charset="utf-8">
+    <script src="document.js"></script>
+
+</head>
+<body>
+    <h1>Objetos - Interações</h1>
+</body>
+    <script>
+        function CarroObj(modelo, marca){
+            this.modelo = modelo;
+            this.marca = marca;
+        }
+
+        var civic = new CarroObj('civic', 'honda');
+
+        var fit = Object.create(civic);
+        fit.ano = '2018';
+
+        //metodo hasOwnProperty verifca se há propriedades nao herdadas no obj
+        // metodo in - verifca se existe aquela nome de propriedades
+        for (var prop in fit){
+           // console.log(fit.hasOwnProperty(prop));
+            if (fit.hasOwnProperty(prop)){
+                console.log(fit[prop]);
+
+            }
+
+        }
+
+
+    </script>
+
+
+</html>

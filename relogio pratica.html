@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="relogio">
+
+    </div>
+
+    <script>
+
+
+        (function () {
+            var $relogio = document.querySelector('.relogio');
+            function getHours(){
+                var data = new Date();
+                var h = formata(data.getHours());
+                var m = formata(data.getMinutes());
+                var s = formata(data.getSeconds());
+
+
+                    return h+":"+m+":"+s;
+
+            }
+
+            function formata(t){
+                return  t= t < 10? t+"0" :t;
+
+            }
+
+
+            function mostrarHoras(relogio){
+                $relogio.textContent= relogio;
+
+            }
+
+            setInterval(function(){
+                mostrarHoras(getHours());
+
+
+            },1000);
+
+
+
+
+        })();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title>Curso JavaScript</title>
+	<meta charset="utf-8">
+</head>
+<body>
+	<script>
+
+	var arr= ['s',2,3,4,5,6,'12']; 
+
+	var soNumero = arr.every(function(el){
+		return typeof el=== 'number'; // se existe somente numero no array, retorna true!!
+	});
+	console.log(soNumero);
+
+	var aoMenosUmNumero = arr.some(function(el){
+		return typeof el === 'string'; //se houver pelo menos uma string retorna true;
+
+	});
+	console.log(aoMenosUmNumero);
+
+	var filtrarNumber = arr.filter(function(el){
+		return typeof el === 'number'; 
+
+	});
+	console.log(filtrarNumber);
+
+//	LOOP DE TODOS OS ELEMENTOS
+	var loopEach = arr.forEach(function(el,i,obj){
+		console.log( 'el-' , el, 'i -', i , 'obj -', obj);
+	});
+	console.log(filtrarNumber);
+//	
+//	MULTIPLICA O VALOR 
+	var multiplicar = filtrarNumber.map(function(el,i){
+		return el* i; //multiplicar o valor do elemento pelo indice (i)
+	});
+	console.log(multiplicar);
+
+//	POSICAO DO ELEMENTO SENTIDO REGULAR
+	var IndexNumber = filtrarNumber.indexOf(6,2);
+	console.log('Posição -',IndexNumber);
+
+//	TRAS A POSICAO DO ELEMENTO DE TRAS PRA FRENTE(3 DE TRAS PRA FRENTE, PROCURAR POR 2)
+	var LastIndexNumber = filtrarNumber.lastIndexOf(3,2);
+	console.log('Posição de trás p frente -',LastIndexNumber);
+
+
+// JUNTA OS ARRAYS
+	var arr2 = arr.concat(filtrarNumber,'idiota', '2');
+	console.log(arr2);
+
+// TRASNFORMAR ARRAY EM STRING, USA CARACTERE SEPARADOR COMO PARAMETRO
+	var arrayString = arr.join('-');
+	console.log(arrayString);
+
+//	INCLUIR UM ELEMENTO NO ARRAY
+	arr.push('novo elemento');
+	console.log(arr);
+
+// REMOVE O ULTIMO ELEMENTO E RETORNA O MESMO
+	var ultimoElemento = arr.pop();
+	console.log(ultimoElemento);
+
+// REMOVE O PRIMEIRO ELEMENTO E RETORNA O MESMO
+	var primeiroElemento = arr.shift();
+	console.log(primeiroElemento);
+
+// INCLUIR O ELEMENTO EM PRIMEIOR
+	arr.unshift(true,false,'vdc');
+	console.log(arr);
+//	SOMA OS ELEMENTOS
+	var someDeArr = filtrarNumber.reduce(function(anterior, atual ,i){
+		console.log('anterior', anterior , 'atual', atual, 'i', i);
+				return anterior + atual + i;
+	});
+	console.log(filtrarNumber);
+	console.log(someDeArr);
+
+//	CONCATENA DE TRÁS PRA FRENTE (USANDO RIGHT)
+	var teste = ['1','2','3','4','5','6','7'].reduceRight(function(a, i){
+			return a + i;
+	});
+		console.log(teste);
+
+//	ARRAY INVERTIDO
+	console.log([20,30,40,50].reverse());
+
+// SLICE RETORNA UM PEDAÇO DE UM ARRAY
+	var pedacoArray= filtrarNumber.slice(2,4);
+	console.log(pedacoArray);
+	console.log(filtrarNumber);
+
+// 1 PARAMETRO (ONDA VAI COMECAR A ALTERACAO (2))
+// 2 PARAMETRO (QUANTOS DESEJA EXCLUIR (0))
+// 3 PARAMETRO (O QUE VC VAI ADICIONAR())	
+	console.log(arr2);
+	var arr3 =arr2.splice(2,0,'limao', 'melao Papaya');
+	console.log(arr2);
+	console.log(arr3);
+
+
+
+
+
+		
+	</script>
+	
+</body>
+</html>

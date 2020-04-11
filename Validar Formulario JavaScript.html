@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pouchdb/7.1.1/pouchdb.min.js"></script>
+
+<head>
+	<title> Curso JavaScript</title>
+	<meta charset="utf-8">
+	<style>
+		.ap{
+			display: block!important;
+
+
+		}
+		.a{
+			display: block;
+
+
+
+		}
+
+	</style>
+</head>
+<body>
+
+	<div>
+		<h1>Curso JavaScript Udemy</h1>
+		<h2>Delegação de eventos</h2>
+
+		<form action="#"  id="form1" method="post">
+			<label for="txtUser">Usuario</label>
+			<input type="text" id="txtUser"
+			name="user">
+			<label for="txtPass">Senha</label>
+			<input type="password" name="namePass" id="txtPass">
+			<button type="submit" name="btnEntrar" id="btnEntrar">Entrar</button>
+			 <br>
+			<label id="lblMensagem" class="a"></label>
+		</form>
+	</div>
+
+	<script>
+		(function(){
+			'use strict'
+			var $form = document.getElementById('form1');
+			var $txtUser = document.getElementById('txtUser');
+			var $txtPass = document.getElementById('txtPass');
+			var $btnEntrar = document.getElementById('btnEntrar');
+			var $lblMensagem = document.querySelector('#lblMensagem')
+			
+			$form.addEventListener('submit',function(e){
+				db.post({id:Date.now(),nome:"Joao",mensagem:"olá"})
+				if(!$txtUser.value || !$txtPass.value){
+				
+					$lblMensagem.classList.add('ap');
+					setTimeout(()=>{
+					$lblMensagem.classList.remove('ap');
+					}, 3000);
+
+					
+					e.preventDefault(); //Cancela o evento se for cancelável(nao envio o formulario)
+				}
+
+
+			});
+		})()
+	</script>
+
+
+</body>
+</html>
+<script type="text/javascript">
+	var db = new PouchDB('dbname');
+
+
+var $lblMensagem = document.querySelector('#lblMensagem')
+
+var changes = db.changes({
+  since: 'now',
+  live: true,
+  include_docs: true
+}).on('change', function(change) {
+	console.log(change)
+ 	lblMensagem.innerHTML += lblMensagem.innerHTML+change.doc.nome+" -- "+change.doc.mensagem+"<br>";
+}).on('complete', function(info) {
+  // changes() was canceled
+}).on('error', function (err) {
+  console.log(err);
+});
+
+</script>

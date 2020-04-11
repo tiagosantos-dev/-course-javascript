@@ -1,0 +1,19 @@
+[
+
+    {
+        "Nome": "Tiago",
+        "Notas": [8,4,8,6]
+    },
+    {
+        "Nome": "Joao",
+        "Notas": [6,4,5,6]
+    },
+    {
+        "Nome": "Lucas",
+        "Notas": [9,4,5,6]
+    },
+    {
+        "Nome": "Pedro",
+        "Notas": [9,4,5,8]
+    }
+]

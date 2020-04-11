@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title></title>
+    <meta charset="utf-8">
+</head>
+<body>
+    <input type="text" id="cronometro"> <br/>
+    <button id="btnIniciar">INICIAR</button>
+    <button id="btnPausar">PAUSAR</button>
+    <button id="btnParar">PARAR</button>
+
+
+    <script>
+
+        (function () {
+
+        var $cronometro = document.querySelector('#cronometro');
+        var $iniciar = document.querySelector('#btnIniciar');
+        var $pausar = document.querySelector('#btnPausar');
+        var $parar = document.querySelector('#btnParar');
+
+        $pausar.addEventListener('click',pausar);
+        $iniciar.addEventListener('click',iniciar);
+        $parar.addEventListener('click',parar);
+
+
+        var  msClickIniciar = 0;
+        var  msClickPausar = 0;
+        var  intervalo = null;
+        var rodando = false;
+        var msTempoDecorrido= 0;
+        function iniciar() {
+            if (rodando) return;
+            timestampClickIniciar = Date.now();
+            iniciarCronometro();
+            rodando = true;
+        }
+        
+        function iniciarCronometro(tempoDecorrido) {
+            var _ms = tempoDecorrido || 0;
+         intervalo = setInterval(function () {
+                var msAgora = Date.now();
+                var diferenca = msAgora - msClickIniciar;
+                $cronometro.value = formataMs( diferenca + _ms);
+            },100)
+        }
+
+        function formataMs(ms){
+
+                if (ms < 1000){
+                    return ms;
+                }else if( ms< 60000){
+                    var s = ms/1000;
+                    s = parseInt(s);
+                    var c = ms -(s * 1000);
+                    return s+ ":"+c;
+
+                }else{
+                    var m = ms/(60000 );
+                    m  = parseInt(m);
+                    var s = ms / 1000 - (m * 60);
+                    s = parseInt(s);
+                    var c = ms- (s * 1000) - (m* 60 *1000);
+                     return m+":"+s+":"+c;
+
+
+            }
+
+        }
+
+        function pausar() {
+            if (!$cronometro.value) return;
+            if (rodando){
+                clearInterval(intervalo);
+                msClickPausar = Date.now();
+                msTempoDecorrido += (msClickPausar - msClickIniciar);
+                rodando = false;
+            }else{
+                msClickPausar = Date.now();
+                iniciarCronometro();
+                rodando = true;
+            }
+
+
+        }
+        function parar() {
+            msClickPausar = 0;
+            msClickIniciar =0;
+            msTempoDecorrido =0;
+            rodando = false;
+            $cronometro.value= " ";
+
+        }
+
+
+
+
+
+
+        })();
+    </script>
+</body>
+</html>

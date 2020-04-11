@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<form action="#">
+		<h1>Checkbox Pratica </h1>
+		<textarea readonly="true" rows="20" cols="40">Contrato de Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+		 </textarea>
+		 <label>
+		 	<br>
+		 	<input type="checkbox" id="chk"> Li e aceito os termos do Contrato
+		 	<br>
+		 	<input type="submit" value="Continuar" name="" id="btn">
+		 </label>
+	</form>
+
+
+
+<script>
+	var $chk = document.getElementById('chk');
+	var $btn = document.getElementById('btn');
+	btnOnOff();
+
+	
+	$chk.addEventListener('change',function(){
+
+		btnOnOff();
+
+
+	});
+
+
+
+
+
+	function btnOnOff(){
+		$btn.disabled = !chk.checked;
+
+	}
+
+
+
+
+</script>
+</body>
+</html>
